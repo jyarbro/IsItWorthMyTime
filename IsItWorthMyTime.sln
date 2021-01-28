@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClient", "WebClient\WebClient.csproj", "{377D46EA-AE07-44D6-A904-F19B7CCEED28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebClient", "WebClient\WebClient.csproj", "{377D46EA-AE07-44D6-A904-F19B7CCEED28}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{153E3963-4B56-421D-A4F7-23666B368844}"
 EndProject
@@ -12,6 +12,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{8DD220E4-AF3B-47CF-BE25-14FF896418CB}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\ci.yaml = .github\workflows\ci.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Git", "Git", "{CBA41657-C565-4760-9BB4-67BFD837179D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
 	EndProjectSection
 EndProject
 Global
@@ -31,6 +37,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1761BB04-431C-43E8-88CE-D0710E0A069F} = {153E3963-4B56-421D-A4F7-23666B368844}
 		{8DD220E4-AF3B-47CF-BE25-14FF896418CB} = {1761BB04-431C-43E8-88CE-D0710E0A069F}
+		{CBA41657-C565-4760-9BB4-67BFD837179D} = {153E3963-4B56-421D-A4F7-23666B368844}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8A41B21F-AD45-4E02-9DE5-93F38E60ABD8}
