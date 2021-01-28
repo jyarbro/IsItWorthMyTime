@@ -13,13 +13,12 @@ jobs:
             dotnet-version: 5.0.x
 
         - name: Publish
-          run: dotnet publish WebClient/WebClient.csproj --configuration Release
+          run: dotnet publish WebClient/WebClient.csproj --configuration Release --output build
 
         - name: Deploy
           uses: JamesIves/github-pages-deploy-action@releases/v4
           with:
-            ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-            BASE_BRANCH: master
-            BRANCH: release
-            FOLDER: WebClient/bin/Release/net5.0/publish/wwwroot 
-            SINGLE_COMMIT: true
+            token: ${{ secrets.ACCESS_TOKEN }}
+            branch: release
+            folder: build/wwwroot 
+            single-commit: true
