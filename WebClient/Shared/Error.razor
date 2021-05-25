@@ -1,0 +1,15 @@
+﻿@using Microsoft.Extensions.Logging
+@inject ILogger<Error> Logger
+
+<CascadingValue Value=this>
+    @ChildContent
+</CascadingValue>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    public void Handle(Exception ex) {
+        Logger.LogError("Error: Type: {Type} Message: {Message}", ex.GetType(), ex.Message);
+    }
+}

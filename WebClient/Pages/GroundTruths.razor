@@ -1,0 +1,58 @@
+﻿@page "/ground-truths"
+@inject HttpClient Http
+@inject State.TimeValues TimeValues
+
+<h1>Ground Truths</h1>
+<p>Enter the actual values applicable to your situation. These values should be based on the person who will be <b>most</b> impacted by the change, not the change developer.</p>
+
+@if (TimeValues == null) {
+    <p><em>Loading...</em></p>
+}
+else {
+    <EditForm Model="TimeValues" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+
+        <div class="table align-middle">
+            <div class="row">
+                <div class="col-1"><label for="work-year">Work Year</label></div>
+                <div class="col-1">
+                    <input @bind="TimeValues.WorkYear" class="form-control" id="work-year" />
+                </div>
+                <div class="col">How many hours are in your work year?</div>
+            </div>
+
+            <div class="row">
+                <div class="col-1"><label for="daily-work-hours">Work Day</label></div>
+                <div class="col-1">
+                    <input @bind="TimeValues.DailyWorkHours" class="form-control" id="daily-work-hours" />
+                </div>
+                <div class="col">How many work hours are in your day on average?</div>
+            </div>
+
+            <div class="row">
+                <div class="col-1"><label for="annual-paid-time-off-hours">Time Off</label></div>
+                <div class="col-1">
+                    <input @bind="TimeValues.AnnualPaidTimeOffHours" class="form-control" id="annual-paid-time-off-hours" />
+                </div>
+                <div class="col">How many paid hours of time off do you get per year?</div>
+            </div>
+        </div>
+
+        <p>Updated @($"{TimeValues.LastUpdate:hh:mm:ss}")</p>
+
+        <button class="btn btn-primary btn-sm" @onclick="TimeValues.Reset" @onclick:preventDefault>Reset to Defaults</button>
+    </EditForm>
+}
+
+@code {
+    protected override void OnInitialized() {
+        TimeValues.OnChange += StateHasChanged;
+    }
+
+    public void Dispose() {
+        TimeValues.OnChange -= StateHasChanged;
+    }
+
+    public void HandleValidSubmit() {
+    }
+}
