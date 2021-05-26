@@ -3,7 +3,7 @@
 @inject State.TimeValues TimeValues
 
 <h1>Ground Truths</h1>
-<p>Enter the actual values applicable to your situation. These values should be based on the person who will be <b>most</b> impacted by the change, not the change developer.</p>
+<p>Enter the actual values applicable to your situation. These values should be based on the person who will be <em>most</em> impacted by the change, <em>not</em> the change developer.</p>
 
 @if (TimeValues == null) {
     <p><em>Loading...</em></p>
@@ -12,35 +12,45 @@ else {
     <EditForm Model="TimeValues" OnValidSubmit="HandleValidSubmit">
         <DataAnnotationsValidator />
 
-        <div class="table align-middle">
+        <div class="table">
             <div class="row">
-                <div class="col-1"><label for="work-year">Work Year</label></div>
+                <div class="col-2 text-right"><label for="hours-per-year">Work Hours per Year</label></div>
                 <div class="col-1">
-                    <input @bind="TimeValues.WorkYear" class="form-control" id="work-year" />
+                    <input @bind="TimeValues.HoursPerYear" class="form-control" id="hours-per-year" />
                 </div>
-                <div class="col">How many hours are in your work year?</div>
+                <div class="col">A normal full-time equivalent year is 2080 hours.</div>
             </div>
 
             <div class="row">
-                <div class="col-1"><label for="daily-work-hours">Work Day</label></div>
+                <div class="col-2 text-right"><label for="hours-per-day">Work Hours per Day</label></div>
                 <div class="col-1">
-                    <input @bind="TimeValues.DailyWorkHours" class="form-control" id="daily-work-hours" />
+                    <input @bind="TimeValues.HoursPerDay" class="form-control" id="hours-per-day" />
                 </div>
-                <div class="col">How many work hours are in your day on average?</div>
+                <div class="col">An average work day is 8 hours.</div>
             </div>
 
             <div class="row">
-                <div class="col-1"><label for="annual-paid-time-off-hours">Time Off</label></div>
+                <div class="col-2 text-right"><label for="break-minutes-per-day">Break Minutes per Day</label></div>
                 <div class="col-1">
-                    <input @bind="TimeValues.AnnualPaidTimeOffHours" class="form-control" id="annual-paid-time-off-hours" />
+                    <input @bind="TimeValues.BreakMinutesPerDay" class="form-control" id="break-minutes-per-day" />
                 </div>
-                <div class="col">How many paid hours of time off do you get per year?</div>
+                <div class="col">Only factor in breaks where work stops. Consider lunch, mandatory hourly breaks, smoke breaks, etc.</div>
+            </div>
+
+            <div class="row">
+                <div class="col-2 text-right"><label for="time-off-hours-per-year">Time-Off Hours per Year</label></div>
+                <div class="col-1">
+                    <input @bind="TimeValues.TimeOffHoursPerYear" class="form-control" id="time-off-hours-per-year" />
+                </div>
+                <div class="col">How many paid hours of time off do you get per year? Consider sick time, vacation, and holidays.</div>
             </div>
         </div>
 
+        <p>Based on these ground truths, the person impacted by the change works an average of @($"{TimeValues.DaysPerWeek:0.00}") days per week, resulting in @TimeValues.WorkableSeconds annual workable seconds.</p>
+
         <p>Updated @($"{TimeValues.LastUpdate:hh:mm:ss}")</p>
 
-        <button class="btn btn-primary btn-sm" @onclick="TimeValues.Reset" @onclick:preventDefault>Reset to Defaults</button>
+        <button class="btn btn-sm btn-primary" @onclick="TimeValues.Reset" @onclick:preventDefault>Reset to Defaults</button>
     </EditForm>
 }
 
