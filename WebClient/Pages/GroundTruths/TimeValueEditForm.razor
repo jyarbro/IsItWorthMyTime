@@ -1,9 +1,4 @@
-﻿<p>
-    This person works an average of @($"{TimeValues.DaysPerWeek:0.00}") days per week, resulting in @TimeValues.WorkableSeconds annual workable seconds.
-    <button class="badge badge-light" @onclick="TimeValues.Reset" @onclick:preventDefault>Reset to Defaults</button>
-</p>
-
-<div class="table border-1">
+﻿<div class="table border-1">
     <div class="row">
         <div class="col-2 text-right"><label for="hours-per-year">Paid Hours per Year</label></div>
         <div class="col-1">
@@ -36,6 +31,11 @@
         <div class="col">Consider sick time, vacation, and holidays.</div>
     </div>
 </div>
+
+<p>
+    This person works an average of @($"{TimeValues.DaysPerWeek:0.00}") days per week, resulting in @TimeValues.WorkableSeconds annual workable seconds.
+    <button class="badge badge-light" @onclick="TimeValues.Reset" @onclick:preventDefault>Reset to Defaults</button>
+</p>
 
 @code {
     [Parameter]

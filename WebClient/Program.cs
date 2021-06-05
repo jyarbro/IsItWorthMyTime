@@ -11,8 +11,8 @@ namespace WebClient {
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(_ => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            builder.Services.AddSingleton<Data.GroundTruthState>();
-            builder.Services.AddSingleton<Services.WorthCalculator>();
+            builder.Services.AddScoped<Data.GroundTruthState>();
+            builder.Services.AddScoped<Services.BreakEvenPointCalculator>();
 
             await builder.Build().RunAsync();
         }

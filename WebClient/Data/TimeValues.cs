@@ -86,6 +86,8 @@ namespace WebClient.Data {
         public float HalfDay => OneDay / 2;
         public float OneWeek => OneDay * DaysPerWeek;
         public float HalfWeek => OneWeek / 2;
+        public float OneMonth => OneDay * DaysPerMonth;
+        public float OneYear => OneDay * DaysPerYear;
 
         public float WorkableSeconds => (RemainingWorkHours * OneHour) - (DaysPerYear * BreakMinutesPerDay * OneMinute);
 

@@ -1,0 +1,20 @@
+﻿@inject BreakEvenPointCalculator Calculator
+@inject GroundTruthState State
+
+@((MarkupString)Calculator.Calculate(TimeSaved, Frequency))
+
+@code {
+    [Parameter]
+    public Interval TimeSaved { get; set; }
+
+    [Parameter]
+    public float Frequency { get; set; }
+
+    protected override void OnInitialized() {
+        State.OnChange += StateHasChanged;
+    }
+
+    public void Dispose() {
+        State.OnChange -= StateHasChanged;
+    }
+}

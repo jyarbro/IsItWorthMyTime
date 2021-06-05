@@ -1,6 +1,20 @@
 ﻿@page "/"
+@inject GroundTruthState State
 
 <h1>Is it worth my time?</h1>
 
 <p>The concept is simple: given a known problem domain and a valid estimate to produce a solution, should I spend my time generating a solution to the problem?</p>
 <p>Basically, what would happen if we took this <a target="_blank" href="https://xkcd.com/1205/">XKCD comic</a> too seriously?</p>
+
+<h3 class="p-3">What is the daily investment break even point?</h3>
+
+<CalculatedTable />
+
+<p class="p-3 description text-justify">
+    Values greater than one workday assume multiple developers producing the change.
+    For example, given average ground truth values, if a business process loses 1 work week 50 times a day due to an extreme
+    inefficiency that affects an entire division, then that company can invest 11 work months <em>per day</em> in development
+    effort to remediate it!
+</p>
+
+<p class="mt-5">Updated @($"{State.LastUpdate:hh:mm:ss}")</p>

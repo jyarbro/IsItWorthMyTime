@@ -6,20 +6,18 @@
 <p>Enter the actual values applicable to your situation.</p>
 
 @if (State == null) {
-    <p><em>Loading...</em></p>
+    <p><em>Hmm...</em></p>
 }
 else {
-<EditForm Model="State">
-    <DataAnnotationsValidator />
+    <EditForm Model="State">
+        <DataAnnotationsValidator />
 
-    <h3>Person benefiting from the change</h3>
-    <TimeValueEditForm TimeValues="State.ImpactedPerson" />
+        <h3 class="p-3">Person benefiting from the change</h3>
+        <TimeValueEditForm TimeValues="State.ImpactedPerson" />
 
-    <h3>Person developing the change</h3>
-    <TimeValueEditForm TimeValues="State.Developer" />
-
-    <p>Updated @($"{State.LastUpdate:hh:mm:ss}")</p>
-</EditForm>
+        <h3 class="p-3">Person developing the change</h3>
+        <TimeValueEditForm TimeValues="State.Developer" />
+    </EditForm>
 }
 
 @code {

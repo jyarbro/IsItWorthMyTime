@@ -1,5 +1,6 @@
 ﻿namespace WebClient.Data {
     public enum Interval {
+        Undefined,
         OneSecond,
         FiveSeconds,
         OneMinute,
@@ -9,6 +10,10 @@
         OneDay,
         HalfDay,
         OneWeek,
-        HalfWeek
+        HalfWeek,
+        OneMonth,
+        HalfMonth,
+        OneYear,
+        HalfYear,
     }
 }
