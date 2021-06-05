@@ -1,0 +1,31 @@
+﻿#top-header, #left-header {
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+#left-header > p {
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    margin-bottom: 0;
+}
+
+.col-title {
+    width: 75px;
+    border-bottom: 3px solid black;
+    padding-bottom: 2px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.row-title {
+    border-right: 3px solid black;
+    padding-right: 5px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.value-cell {
+    border-bottom: 1px solid #999;
+    text-align: center;
+}

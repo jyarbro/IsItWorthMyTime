@@ -1,11 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebClient.State {
+namespace WebClient.Data {
     public class TimeValues {
         public event Action OnChange;
-
-        public DateTime LastUpdate { get; set; } = DateTime.Now;
 
         [Range(1, 8760)]
         public int HoursPerYear {
@@ -59,6 +57,20 @@ namespace WebClient.State {
         int _BreakMinutesPerDay;
         readonly int _BreakMinutesPerDayDefault = 30;
 
+        // TODO: Implement pay calculation
+        [Range(0.01, 5000)]
+        public float HourlyPay {
+            get => _HourlyPay;
+            set {
+                if (_HourlyPay != value) {
+                    _HourlyPay = value;
+                    NotifyStateChanged();
+                }
+            }
+        }
+        float _HourlyPay;
+        readonly float _HourlyPayDefault = 24.60f; // $51,168 median US income
+
         public float RemainingWorkHours => HoursPerYear - TimeOffHoursPerYear;
         public float DaysPerYear => RemainingWorkHours / HoursPerDay;
         public float DaysPerMonth => DaysPerYear / 12;
@@ -73,13 +85,11 @@ namespace WebClient.State {
         public float OneDay => HoursPerDay * OneHour;
         public float HalfDay => OneDay / 2;
         public float OneWeek => OneDay * DaysPerWeek;
+        public float HalfWeek => OneWeek / 2;
 
         public float WorkableSeconds => (RemainingWorkHours * OneHour) - (DaysPerYear * BreakMinutesPerDay * OneMinute);
 
-        void NotifyStateChanged() {
-            LastUpdate = DateTime.Now;
-            OnChange?.Invoke();
-        }
+        void NotifyStateChanged() => OnChange?.Invoke();
 
         public TimeValues() {
             Reset();
@@ -90,6 +100,7 @@ namespace WebClient.State {
             TimeOffHoursPerYear = _TimeOffHoursPerYearDefault;
             HoursPerDay = _HoursPerDayDefault;
             BreakMinutesPerDay = _BreakMinutesPerDayDefault;
+            HourlyPay = _HourlyPayDefault;
         }
     }
 }

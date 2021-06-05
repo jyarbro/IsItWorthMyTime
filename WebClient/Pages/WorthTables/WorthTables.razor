@@ -1,0 +1,23 @@
+﻿@page "/worth-tables"
+@inject GroundTruthState GroundTruthState
+
+<h1>Worth Tables</h1>
+
+<h4 class="mt-5">Full Weeks of Development</h4>
+<WorthTable DevTime="@Interval.OneWeek" />
+
+<h4 class="mt-5">Full Days of Development</h4>
+<WorthTable DevTime="@Interval.OneDay" />
+
+<h4 class="mt-5">Full Hours of Development</h4>
+<WorthTable DevTime="@Interval.OneHour" />
+
+<h4 class="mt-5">Full Minutes of Development</h4>
+<WorthTable DevTime="@Interval.OneMinute" />
+
+<h4 class="mt-5">Full Seconds of Development</h4>
+<WorthTable DevTime="@Interval.OneSecond" />
+
+@code {
+
+}
