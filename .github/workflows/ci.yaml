@@ -1,5 +1,7 @@
 name: 'Update Release Branch'
-on: push
+on: 
+  push:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -18,7 +20,7 @@ jobs:
         - name: Deploy
           uses: JamesIves/github-pages-deploy-action@releases/v4
           with:
-            token: ${{ secrets.ACCESS_TOKEN }}
+            token: ${{ secrets.GITHUB_TOKEN }}
             branch: release
             folder: build/wwwroot 
             single-commit: true
