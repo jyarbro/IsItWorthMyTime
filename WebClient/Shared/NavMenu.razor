@@ -1,11 +1,5 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">WebClient</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
-
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+﻿<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <p class="pl-3 pt-3 text-center"><a class="navbar-brand" href="/"><img src="/img/favicon.png" /></a></p>
     <ul class="nav flex-column">
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">

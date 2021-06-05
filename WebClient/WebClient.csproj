@@ -15,5 +15,11 @@
         <!-- https://remibou.github.io/Make-your-Blazor-development-faster/ -->
         <Watch Include="..\ClientProject\**\*.razor" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Content Update="wwwroot\img\favicon.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
     
 </Project>
