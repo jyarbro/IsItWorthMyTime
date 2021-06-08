@@ -1,7 +1,7 @@
 ﻿@page "/"
 @inject GroundTruthState State
 
-<h1>Is it worth my time?</h1>
+<h1><img src="/img/favicon.png" /> Is it worth my time?</h1>
 
 <p>The concept is simple: given a known problem domain and a valid estimate to produce a solution, should I spend my time generating a solution to the problem?</p>
 <p>Basically, what would happen if we took this <a target="_blank" href="https://xkcd.com/1205/">XKCD comic</a> too seriously?</p>
@@ -17,6 +17,18 @@
     effort to remediate it!
 </p>
 
+<GroundTruths />
+
 <p class="mt-5">Updated @($"{State.LastUpdate:hh:mm:ss}")</p>
 
 <p>Free to all under the <a href="https://github.com/jyarbro/IsItWorthMyTime/blob/master/UNLICENSE">Unlicense</a>. No privacies were harmed in the execution of this site.</p>
+
+@code {
+    protected override void OnInitialized() {
+        State.OnChange += StateHasChanged;
+    }
+
+    public void Dispose() {
+        State.OnChange -= StateHasChanged;
+    }
+}

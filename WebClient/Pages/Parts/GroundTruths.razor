@@ -1,0 +1,64 @@
+﻿@inject GroundTruthState State
+
+<h3 class="p-3">Ground Truths</h3>
+<p>Enter the actual values applicable to your situation.</p>
+
+<EditForm Model="State">
+    <DataAnnotationsValidator />
+
+    <div class="table border-1">
+
+        <div class="row">
+            <div class="col-2 text-right"><label for="hours-per-year">Paid Hours per Year</label></div>
+            <div class="col-1">
+                <input @bind="State.HoursPerYear" class="form-control" id="hours-per-year" />
+            </div>
+            <div class="col">A normal full-time equivalent year is 2080 hours.</div>
+        </div>
+
+        <div class="row">
+            <div class="col-2 text-right"><label for="hours-per-day">Paid Hours per Day</label></div>
+            <div class="col-1">
+                <input @bind="State.HoursPerDay" class="form-control" id="hours-per-day" />
+            </div>
+            <div class="col">An normal work day is 8 hours.</div>
+        </div>
+
+        <div class="row">
+            <div class="col-2 text-right"><label for="dev-hours-per-day">Developer Hours per Day</label></div>
+            <div class="col-1">
+                <input @bind="State.DevHoursPerDay" class="form-control" id="dev-hours-per-day" />
+            </div>
+            <div class="col">The average hours per day a developer could work on the change (without burnout!!).</div>
+        </div>
+
+        <div class="row">
+            <div class="col-2 text-right"><label for="break-minutes-per-day">Break Minutes per Day</label></div>
+            <div class="col-1">
+                <input @bind="State.BreakMinutesPerDay" class="form-control" id="break-minutes-per-day" />
+            </div>
+            <div class="col">Only factor in breaks where work stops. Consider lunch, mandatory hourly breaks, smoke breaks, etc.</div>
+        </div>
+
+        <div class="row">
+            <div class="col-2 text-right"><label for="time-off-hours-per-year">Time-Off Hours per Year</label></div>
+            <div class="col-1">
+                <input @bind="State.TimeOffHoursPerYear" class="form-control" id="time-off-hours-per-year" />
+            </div>
+            <div class="col">Consider sick time, vacation, and holidays.</div>
+        </div>
+
+        <div class="row">
+            <div class="col-2 text-right"><label>Days per Week</label></div>
+            <div class="col-1 pl-4">
+                @($"{State.DaysPerWeek:0.00}")
+            </div>
+            <div class="col">Days per week is exposed to the inefficiency.</div>
+        </div>
+
+    </div>
+
+    <p>
+        <button class="badge badge-light" @onclick="State.Reset" @onclick:preventDefault>Reset to Defaults</button>
+    </p>
+</EditForm>
